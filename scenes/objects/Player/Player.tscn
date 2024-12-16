@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7hpl3mcwfxik"]
+
+[ext_resource type="PackedScene" uid="uid://uvvgyvc06q7j" path="res://scenes/objects/entity/Entity.tscn" id="1_e4y2r"]
+[ext_resource type="Script" path="res://scenes/objects/player/Player.gd" id="2_123wy"]
+
+[node name="Player" instance=ExtResource("1_e4y2r")]
+script = ExtResource("2_123wy")
+
+[node name="XP" parent="." index="2"]
+offset_left = -9.0
+offset_top = -33.0
+offset_right = 31.0
+offset_bottom = -10.0
+
+[node name="Camera" type="Camera2D" parent="." index="3"]

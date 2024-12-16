@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd7y52yxbri4f"]
+
+[ext_resource type="Script" path="res://scenes/objects/item/Item.gd" id="1_i6ur3"]
+
+[node name="Item" type="StaticBody2D"]
+script = ExtResource("1_i6ur3")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]

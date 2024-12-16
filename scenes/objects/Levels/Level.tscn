@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ir5ylw2eiwjn"]
+
+[node name="Level" type="Node2D"]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+
+[node name="TileMapLayers" type="Node" parent="."]

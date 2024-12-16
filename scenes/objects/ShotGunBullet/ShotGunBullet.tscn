@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://begtehqg0v33l"]
+
+[ext_resource type="PackedScene" uid="uid://j51lg285sm41" path="res://scenes/objects/Bullet/Bullet.tscn" id="1_d3b4e"]
+
+[node name="ShotGunBullet" instance=ExtResource("1_d3b4e")]
