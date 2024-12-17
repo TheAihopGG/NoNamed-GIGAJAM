@@ -1,27 +1,48 @@
 extends CharacterBody2D
+class_name Entity
 
-@export var xp: int
-@export var speed: float
+const FRICTION = 0.15
 
-@onready var xp_label: Label = $XP
-@onready var weapons: Array[Node] = $Weapons.get_children()
+@export var hp: int
+@export var max_hp: int
+@export var speed_acceleration: float
+@export var max_speed: float
 
-func _ready() -> void:
-	for weapon in weapons:
-		print(weapon.name)
+@onready var hp_label: Label = $XP
+
+enum states {
+	MOVE,
+	IDLE
+}
+
+var state: int
+var move_direction: Vector2 = Vector2.ZERO
+
+
+func _physics_process(_delta: float) -> void:
+	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
+
 
 func _process(_delta: float) -> void:
-	xp_label.text = str(xp)
+	hp_label.text = str(hp) + "/" + str(max_hp)
+	get_input()
+	enter_state()
+	if velocity.length() > max_speed:
+		velocity = move_direction.normalized() * max_speed
 
-func _replenish_xp(
-	count: int
-) -> void:
-	xp += count
-	print(name, "replenished xp", count)
+	else:
+		velocity += move_direction.normalized() * speed_acceleration
+	move_and_slide()
 
-func _take_damage(
-	damage: int,
-	_weapon: String
-) -> void:
-	xp -= damage
-	print(name, "took damage", damage)
+
+func get_input() -> void:
+	pass
+
+
+func enter_state() -> void:
+	match state:
+		states.MOVE:
+			print(move_direction)
+		
+		states.IDLE:
+			print(move_direction)

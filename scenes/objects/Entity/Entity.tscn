@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://uvvgyvc06q7j"]
+[gd_scene load_steps=4 format=3 uid="uid://uvvgyvc06q7j"]
 
 [ext_resource type="Script" path="res://scenes/objects/entity/Entity.gd" id="1_ijug0"]
+[ext_resource type="FontFile" uid="uid://b3ci4fgjsqw67" path="res://fonts/monogram.ttf" id="2_j8r72"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o8wdd"]
+font = ExtResource("2_j8r72")
 shadow_size = 0
 shadow_offset = Vector2(0, 0)
 
@@ -11,15 +13,15 @@ script = ExtResource("1_ijug0")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-
 [node name="XP" type="Label" parent="."]
 texture_filter = 1
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 41.0
-offset_bottom = 24.0
-text = "1"
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -31.0
+text = "0
+"
 label_settings = SubResource("LabelSettings_o8wdd")
+horizontal_alignment = 1
 
 [node name="Weapons" type="Node" parent="."]
