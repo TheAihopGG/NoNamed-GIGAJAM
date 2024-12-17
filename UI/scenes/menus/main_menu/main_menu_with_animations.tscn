@@ -358,9 +358,9 @@ graph_offset = Vector2(-180.277, 49)
 
 [sub_resource type="Curve2D" id="Curve2D_yotxp"]
 _data = {
-"points": PackedVector2Array(58.7338, 25.3984, 0, 0, 1286, -110, 15.1241, -33.2154, -15.1241, 33.2154, 1122, 238, 50.441, -47.0531, -50.441, 47.0531, 876, 563, 0, 0, 0, 0, 555, 752, 0, 0, 0, 0, 1505, 936, 0, 0, 0, 0, 1640, -132, 0, 0, 0, 0, 1286, -110)
+"points": PackedVector2Array(-1260.09, -56.0633, 1260.09, 56.0633, -158, 738, 891.673, 189.547, -891.673, -189.547, 557, -223, 0, 0, 0, 0, -309, -100, 0, 0, 0, 0, -158, 738)
 }
-point_count = 7
+point_count = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcr63"]
 atlas = ExtResource("6_0pwvc")
@@ -1423,9 +1423,9 @@ animations = [{
 [sub_resource type="Curve2D" id="Curve2D_qrik3"]
 bake_interval = 20.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 45, 57, 9, 32.2601, -39.2452, -32.2601, 39.2452, -91, 326, 0, 0, 0, 0, -135.665, 379.671, 33.8073, -32.3782, -33.8073, 32.3782, -274, 511, 54.6882, 12.0372, -54.6882, -12.0372, -627, 664, 0, 0, 0, 0, -579, 422, 0, 0, 0, 0, -565, 35, 0, 0, 0, 0, -292, 15, 0, 0, 0, 0, 20, -41, 0, 0, 0, 0, 57, 9)
+"points": PackedVector2Array(0, 0, 0, 0, -274, -184, 1510.79, 273.341, 0, 0, -1009, 485, 0, 0, 0, 0, -905, -31, 0, 0, 0, 0, -274, -184)
 }
-point_count = 10
+point_count = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6uu4s"]
 atlas = ExtResource("7_s12xx")
@@ -2526,7 +2526,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 20),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [1.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_u213w"]
@@ -3647,9 +3647,9 @@ script = ExtResource("5_68jkf")
 curve = SubResource("Curve2D_yotxp")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="MenuContainer/Path2D2" index="0"]
-position = Vector2(1286, -110)
+position = Vector2(-158, 738)
 rotation = 3.07953
-progress = 3564.64
+progress = 3952.04
 rotates = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="MenuContainer/Path2D2/PathFollow2D" index="0"]
@@ -3664,7 +3664,7 @@ position = Vector2(528, -107)
 curve = SubResource("Curve2D_qrik3")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="MenuContainer/Path2D" index="0"]
-position = Vector2(57, 9)
+position = Vector2(-274, -184)
 rotates = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuContainer/Path2D/PathFollow2D" index="0"]
