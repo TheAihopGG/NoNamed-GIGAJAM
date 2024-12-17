@@ -25,3 +25,5 @@ label_settings = SubResource("LabelSettings_o8wdd")
 horizontal_alignment = 1
 
 [node name="Weapons" type="Node" parent="."]
+
+[node name="Effects" type="Node" parent="."]

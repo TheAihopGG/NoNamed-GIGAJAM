@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://d317jwpjlumvb"]
+
+[ext_resource type="PackedScene" uid="uid://3ycubyfa0y4o" path="res://scenes/objects/Effect/Effect.tscn" id="1_dg6ou"]
+[ext_resource type="Script" path="res://scenes/objects/Poison/Poison.gd" id="2_4nocl"]
+
+[node name="Poison" instance=ExtResource("1_dg6ou")]
+script = ExtResource("2_4nocl")

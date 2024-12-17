@@ -9,6 +9,7 @@ const FRICTION = 0.15
 @export var max_speed: float
 
 @onready var hp_label: Label = $XP
+@onready var effects: Node = $Effects
 
 enum states {
 	MOVE,
@@ -18,6 +19,8 @@ enum states {
 var state: int
 var move_direction: Vector2 = Vector2.ZERO
 
+signal hp_reduced(new_hp: int)
+
 
 func _physics_process(_delta: float) -> void:
 	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
@@ -25,7 +28,6 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	hp_label.text = str(hp) + "/" + str(max_hp)
-	get_input()
 	enter_state()
 	if velocity.length() > max_speed:
 		velocity = move_direction.normalized() * max_speed
@@ -35,14 +37,10 @@ func _process(_delta: float) -> void:
 	move_and_slide()
 
 
-func get_input() -> void:
+func enter_state() -> void:
 	pass
 
 
-func enter_state() -> void:
-	match state:
-		states.MOVE:
-			print(move_direction)
-		
-		states.IDLE:
-			print(move_direction)
+func _reduce_hp(hp_count: int) -> void:
+	hp += hp_count
+	hp_reduced.emit(hp)
