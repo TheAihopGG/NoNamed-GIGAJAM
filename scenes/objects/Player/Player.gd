@@ -1,82 +1,47 @@
 extends Entity
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_tree: AnimationTree = $AnimationTree
 
-var last_direction: Vector2 = Vector2.RIGHT
+var playback: AnimationNodeStateMachinePlayback
 
 
-func get_input() -> void:
+func _ready() -> void:
+	playback = animation_tree["parameters/playback"]
+
+
+func _physics_process(_delta: float) -> void:
 	move_direction = Vector2.ZERO
-	if Input.is_action_pressed("moveUp"):
+	if Input.is_action_pressed("up"):
 		move_direction += Vector2.UP
 	
-	if Input.is_action_pressed("moveDown"):
+	if Input.is_action_pressed("down"):
 		move_direction += Vector2.DOWN
-
-	if Input.is_action_pressed("moveRight"):
+	
+	if Input.is_action_pressed("right"):
 		move_direction += Vector2.RIGHT
 	
-	if Input.is_action_pressed("moveLeft"):
+	if Input.is_action_pressed("left"):
 		move_direction += Vector2.LEFT
 	
-	if move_direction != Vector2.ZERO:
-		last_direction = move_direction.normalized()
-		state = states.MOVE
+	if velocity.length() < max_speed:
+		velocity += move_direction.normalized() * speed_acceleration
 	
 	else:
-		state = states.IDLE
-
-
-func enter_state() -> void:
-	match state:
-		states.MOVE:
-			match move_direction:
-				Vector2(0, -1):
-					animation_player.play("walk_up")
-				
-				Vector2(1, -1):
-					animation_player.play("walk_right_up")
-
-				Vector2(0, 1):
-					animation_player.play("walk_down")
-				
-				Vector2(1, 0):
-					animation_player.play("walk_right")
-				
-				Vector2(1, 1):
-					animation_player.play("walk_right")
-				
-				Vector2(-1, 0):
-					animation_player.play("walk_left")
-				
-				Vector2(-1, 1):
-					animation_player.play("walk_left")
-				
-				Vector2(-1, -1):
-					animation_player.play("walk_left_up")
-			
-		states.IDLE:
-			match last_direction:
-				Vector2(0, -1):
-					animation_player.play("idle_up")
-				
-				Vector2(1, -1):
-					animation_player.play("idle_right_up")
-
-				Vector2(0, 1):
-					animation_player.play("idle_down")
-				
-				Vector2(1, 1):
-					animation_player.play("idle_down")
-				
-				Vector2(-1, 1):
-					animation_player.play("idle_down")
-				
-				Vector2(1, 0):
-					animation_player.play("idle_right")
+		velocity = move_direction.normalized() * max_speed
 	
-				Vector2(-1, 0):
-					animation_player.play("idle_left")
+	move_and_slide()
+	select_animation()
+	update_animation_parameters()
 
-				Vector2(-1, -1):
-					animation_player.play("idle_left_up")
+
+func select_animation() -> void:
+	if velocity == Vector2.ZERO:
+		playback.travel("Idle")
+	else:
+		playback.travel("Walk")
+
+
+func update_animation_parameters() -> void:
+	if move_direction != Vector2.ZERO:
+		animation_tree["parameters/Idle/blend_position"] = move_direction
+		animation_tree["parameters/Walk/blend_position"] = move_direction
