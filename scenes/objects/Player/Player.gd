@@ -22,12 +22,9 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("left"):
 		move_direction += Vector2.LEFT
-	
-	if velocity.length() < max_speed:
-		velocity += move_direction.normalized() * speed_acceleration
-	
-	else:
-		velocity = move_direction.normalized() * max_speed
+
+	velocity = move_direction.normalized() * speed_acceleration
+	velocity.limit_length(max_speed)
 	
 	move_and_slide()
 	select_animation()

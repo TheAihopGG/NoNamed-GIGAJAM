@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dgxau3y747d0q" path="res://scenes/objects/Player/Walking/walking_right_up.png" id="9_jgpyn"]
 [ext_resource type="Texture2D" uid="uid://dpohtd24uu4ne" path="res://scenes/objects/Player/Walking/walking_right.png" id="9_nwa8a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vw6kq"]
-radius = 9.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8f1e"]
+size = Vector2(12, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_enkcn"]
 atlas = ExtResource("3_qsq7v")
@@ -988,11 +988,12 @@ states/Walk/position = Vector2(456, 100)
 script = ExtResource("2_123wy")
 hp = 150
 max_hp = 150
-speed_acceleration = 15.0
-max_speed = 100.0
+speed_acceleration = 100.0
+max_speed = 200.0
 
 [node name="Hitbox" parent="." index="0"]
-shape = SubResource("CircleShape2D_vw6kq")
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_s8f1e")
 
 [node name="XP" parent="." index="1"]
 offset_top = -35.0
@@ -1005,7 +1006,6 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_8egaq")
 animation = &"idle_down"
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
